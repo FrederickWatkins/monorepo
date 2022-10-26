@@ -1,4 +1,5 @@
 use num::Complex;
+use more_asserts;
 #[derive(Copy, Clone, PartialEq, PartialOrd)]
 struct MandelbrotCalculator {
     width: f64,
@@ -74,7 +75,7 @@ mod mandelbrot_functions_test {
     #[test]
     fn screen_to_complex_test_1() {
         let calc = MandelbrotCalculator::new(500, 500, 100);
-        assert!((calc.screen_to_complex(250, 250) - Complex::<f64>::new(-0.5, 0.0)).norm() <= 0.01);
+        more_asserts::assert_le!((calc.screen_to_complex(250, 250) - Complex::<f64>::new(-0.5, 0.0)).norm(), 0.01);
     }
 
     #[test]
@@ -84,5 +85,11 @@ mod mandelbrot_functions_test {
             calc.screen_to_complex(1920, 1080),
             Complex::<f64>::new(32.0 / 27.0, -1.0)
         )
+    }
+
+    #[test]
+    fn comp_part_of_set_test_1() {
+        let calc = MandelbrotCalculator::new(500, 500, 100);
+        assert_eq!(calc.comp_part_of_set(Complex::<f64>::new(0.0, 0.0)), true)
     }
 }

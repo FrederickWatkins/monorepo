@@ -1,5 +1,5 @@
 {
-  "checksum": "f4d4e26248cbab3e32b96ee2af98b4b2692a83ef3dcae56b685e60ef96196b06",
+  "checksum": "791e33a46619a9f61b7eabdef7892bc1c8edc0162e75ed4dc1d56f57c0d507e3",
   "crates": {
     "autocfg 1.1.0": {
       "name": "autocfg",
@@ -60,6 +60,10 @@
         "deps": {
           "common": [
             {
+              "id": "more-asserts 0.3.1",
+              "target": "more_asserts"
+            },
+            {
               "id": "num 0.4.0",
               "target": "num"
             }
@@ -70,6 +74,39 @@
         "version": "0.1.0"
       },
       "license": null
+    },
+    "more-asserts 0.3.1": {
+      "name": "more-asserts",
+      "version": "0.3.1",
+      "repository": {
+        "Http": {
+          "url": "https://crates.io/api/v1/crates/more-asserts/0.3.1/download",
+          "sha256": "1fafa6961cabd9c63bcd77a45d7e3b7f3b552b70417831fb0f56db717e72407e"
+        }
+      },
+      "targets": [
+        {
+          "Library": {
+            "crate_name": "more_asserts",
+            "crate_root": "src/lib.rs",
+            "srcs": {
+              "include": [
+                "**/*.rs"
+              ],
+              "exclude": []
+            }
+          }
+        }
+      ],
+      "library_target_name": "more_asserts",
+      "common_attrs": {
+        "compile_data_glob": [
+          "**"
+        ],
+        "edition": "2018",
+        "version": "0.3.1"
+      },
+      "license": "Unlicense OR MIT OR Apache-2.0 OR CC0-1.0"
     },
     "num 0.4.0": {
       "name": "num",
