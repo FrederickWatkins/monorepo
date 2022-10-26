@@ -16,7 +16,7 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - name: cd
-      run: cd mandelbrot_calculator_rust
     - name: Run tests
-      run: bazel test //...
+      run: 
+        - cd mandelbrot_calculator_rust
+        - bazel test //...
