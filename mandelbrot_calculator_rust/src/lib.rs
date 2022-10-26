@@ -1,7 +1,6 @@
 use num_complex::Complex;
-use more_asserts;
 #[derive(Copy, Clone, PartialEq, PartialOrd)]
-struct MandelbrotCalculator {
+pub struct MandelbrotCalculator {
     width: f64,
     height: f64,
     ratio: f64,
@@ -59,6 +58,7 @@ impl MandelbrotCalculator {
 #[cfg(test)]
 mod mandelbrot_functions_test {
     use super::*;
+    use more_asserts;
 
     #[test]
     fn calculate_ratio_test_1() {
