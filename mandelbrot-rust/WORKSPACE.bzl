@@ -11,7 +11,7 @@ http_archive(
     ],
 )
 
-load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_register_toolchains")
+load("@rules_rust//rust:repositories.bzl", "rules_rust_dependencies", "rust_register_toolchains", "crate_universe_dependencies")
 
 rules_rust_dependencies()
 
