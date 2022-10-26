@@ -14,5 +14,6 @@ rust_test(
     crate = ":mandelbrot_calculator",
     deps = all_crate_deps(
         normal = True,
-    )
+    ),
+    size = "small"
 )
