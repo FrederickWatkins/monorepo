@@ -1,4 +1,4 @@
-use num::Complex;
+use num_complex::Complex;
 use more_asserts;
 #[derive(Copy, Clone, PartialEq, PartialOrd)]
 struct MandelbrotCalculator {
