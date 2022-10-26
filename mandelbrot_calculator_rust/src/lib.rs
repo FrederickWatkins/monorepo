@@ -24,7 +24,7 @@ impl MandelbrotCalculator {
         self.comp_part_of_set(self.screen_to_complex(x, y))
     }
 
-    pub fn comp_part_of_set(self, c: Complex<f64>) -> bool {
+    fn comp_part_of_set(self, c: Complex<f64>) -> bool {
         let mut z = Complex::<f64>::new(0.0, 0.0);
         for _i in 0..self.iterations {
             z = (z * z) + c;
@@ -44,7 +44,7 @@ impl MandelbrotCalculator {
         Complex::<f64>::new(r, i)
     }
 
-    fn change_config(&mut self, width: u32, height: u32, iterations: u32) {
+    pub fn change_config(&mut self, width: u32, height: u32, iterations: u32) {
         self.width = width.into();
         self.height = height.into();
         self.iterations = iterations;
