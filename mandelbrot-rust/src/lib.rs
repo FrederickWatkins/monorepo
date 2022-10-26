@@ -85,5 +85,4 @@ mod mandelbrot_functions_test {
             Complex::<f64>::new(32.0 / 27.0, -1.0)
         )
     }
-    
 }
