@@ -92,4 +92,40 @@ mod mandelbrot_functions_test {
         let calc = MandelbrotCalculator::new(500, 500, 100);
         assert_eq!(calc.comp_part_of_set(Complex::<f64>::new(0.0, 0.0)), true)
     }
+
+    fn comp_part_of_set_test_2() {
+        let calc = MandelbrotCalculator::new(500, 500, 100);
+        assert_eq!(calc.comp_part_of_set(Complex::<f64>::new(1.0, 1.0)), false)
+    }
+
+    fn pos_part_of_set_test_1() {
+        let calc = MandelbrotCalculator::new(500, 500, 100);
+        assert_eq!(calc.pos_part_of_set(500, 500), false)
+    }
+
+    fn pos_part_of_set_test_2() {
+        let calc = MandelbrotCalculator::new(500, 500, 100);
+        assert_eq!(calc.pos_part_of_set(0, 0), false)
+    }
+
+    fn pos_part_of_set_test_3() {
+        let calc = MandelbrotCalculator::new(500, 500, 100);
+        assert_eq!(calc.pos_part_of_set(250, 250), true)
+    }
+
+    
+    fn pos_part_of_set_test_4() {
+        let calc = MandelbrotCalculator::new(1920, 1080, 100);
+        assert_eq!(calc.pos_part_of_set(1920, 1080), false)
+    }
+
+    fn pos_part_of_set_test_5() {
+        let calc = MandelbrotCalculator::new(1920, 1080, 100);
+        assert_eq!(calc.pos_part_of_set(0, 0), false)
+    }
+
+    fn pos_part_of_set_test_6() {
+        let calc = MandelbrotCalculator::new(1920, 1080, 100);
+        assert_eq!(calc.pos_part_of_set(1000, 500), true)
+    }
 }
