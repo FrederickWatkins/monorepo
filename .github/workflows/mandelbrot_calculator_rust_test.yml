@@ -19,3 +19,4 @@ jobs:
     - name: Run tests
       run: |
         cd mandelbrot_calculator_rust
+        cargo test
