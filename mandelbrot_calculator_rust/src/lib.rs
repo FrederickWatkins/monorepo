@@ -1,5 +1,8 @@
 use num_complex::Complex;
+use wasm_bindgen::prelude::*;
+
 #[derive(Copy, Clone, PartialEq, PartialOrd)]
+#[wasm_bindgen]
 pub struct MandelbrotCalculator {
     width: f64,
     height: f64,
@@ -7,7 +10,9 @@ pub struct MandelbrotCalculator {
     iterations: u32,
 }
 
+#[wasm_bindgen]
 impl MandelbrotCalculator {
+    #[wasm_bindgen(constructor)]
     pub fn new(width: u32, height: u32, iterations: u32) -> Self {
         let mut new = MandelbrotCalculator {
             width: 0.0,
@@ -75,7 +80,10 @@ mod mandelbrot_functions_test {
     #[test]
     fn screen_to_complex_test_1() {
         let calc = MandelbrotCalculator::new(500, 500, 100);
-        more_asserts::assert_le!((calc.screen_to_complex(250, 250) - Complex::<f64>::new(-0.5, 0.0)).norm(), 0.01);
+        more_asserts::assert_le!(
+            (calc.screen_to_complex(250, 250) - Complex::<f64>::new(-0.5, 0.0)).norm(),
+            0.01
+        );
     }
 
     #[test]
@@ -117,7 +125,6 @@ mod mandelbrot_functions_test {
         assert_eq!(calc.pos_part_of_set(250, 250), true)
     }
 
-    
     #[test]
     fn pos_part_of_set_test_4() {
         let calc = MandelbrotCalculator::new(1920, 1080, 100);
