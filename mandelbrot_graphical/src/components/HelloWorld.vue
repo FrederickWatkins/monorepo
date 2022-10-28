@@ -1,34 +1,41 @@
-<script setup lang="ts">
-import { ref } from 'vue'
-
-defineProps<{ msg: string }>()
-
-const count = ref(0)
+<script lang="ts">
+export default {
+  data: () => ({
+    width: document.documentElement.clientWidth,
+    height: document.documentElement.clientHeight,
+    msg: "lol"
+  }),
+  mounted() {
+    window.addEventListener('resize', this.getDimensions);
+  },
+  unmounted() {
+    window.removeEventListener('resize', this.getDimensions);
+  },
+  methods: {
+    getDimensions() {
+      this.width = document.documentElement.clientWidth;
+      this.height = document.documentElement.clientHeight;
+      this.msg = "idiot";
+    },
+    drawCanvas() {
+      var c: HTMLCanvasElement = <HTMLCanvasElement>document.getElementById("myCanvas")!;
+      var ctx = c.getContext("2d")!;
+      ctx.moveTo(0, 0);
+      ctx.lineTo(200, 100);
+      ctx.strokeStyle = '#ff000';
+      ctx.stroke();
+    }
+  }
+}
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
   <div class="card">
-    <button type="button" @click="count++">count is {{ count }}</button>
-    <p>
-      Edit
-      <code>components/HelloWorld.vue</code> to test HMR
-    </p>
+    <canvas id="myCanvas" vbind:height="height" vbind:width="width"></canvas>
   </div>
-
-  <p>
-    Check out
-    <a href="https://vuejs.org/guide/quick-start.html#local" target="_blank"
-      >create-vue</a
-    >, the official Vue + Vite starter
-  </p>
-  <p>
-    Install
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-    in your IDE for a better DX
-  </p>
-  <p class="read-the-docs">Click on the Vite and Vue logos to learn more</p>
+  <button @click="drawCanvas">
+    {{msg}}
+  </button>
 </template>
 
 <style scoped>
