@@ -18,5 +18,5 @@ jobs:
     - uses: actions/checkout@v3
     - name: Run tests
       run: | 
-        - cd test_os_rust
-        - cargo test --verbose
+        cd test_os_rust
+        cargo test --verbose
