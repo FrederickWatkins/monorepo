@@ -2,11 +2,11 @@
 #![no_main]
 #![feature(custom_test_frameworks)]
 #![test_runner(crate::test_runner)]
-#![reexport_test_harness_main = "test_main"]
 
 use core::panic::PanicInfo;
 
 mod serial;
+
 
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 #[repr(u32)]
@@ -32,8 +32,7 @@ fn panic(info: &PanicInfo) -> ! {
     loop{}
 }
 
-#[cfg(test)]
-fn test_runner(tests: &[&dyn Testable]) {
+pub fn test_runner(tests: &[&dyn Testable]) {
     serial_println!("Running {} tests", tests.len());
     for test in tests {
         test.run();
