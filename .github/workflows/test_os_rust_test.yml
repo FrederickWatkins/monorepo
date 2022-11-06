@@ -1,0 +1,25 @@
+name: test_os_rust_test
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+env:
+  CARGO_TERM_COLOR: always
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Run tests
+      run: | 
+        cd test_os_rust
+        rustup toolchain install nightly
+        rustup default nightly
+        rustup target add x86_64-test_os.json
+        cargo test --verbose
